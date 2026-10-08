@@ -1,0 +1,57 @@
+{
+  "name": "@zws/dsh-copy-session-id",
+  "version": "1.0.0",
+  "description": "会话标题栏操作区加一个纯图标「复制会话 ID」按钮：点一下把当前会话 ID 原文放进剪贴板，图标变对勾并提示「已复制」，1.5 秒后还原。不常驻显示 ID 文本，不加任何前缀后缀。",
+  "type": "module",
+  "main": "lib/index.js",
+  "icon": "./icon.svg",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./package.json": "./package.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zws20070309/dsh-copy-session-id.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zws20070309/dsh-copy-session-id/issues"
+  },
+  "homepage": "https://github.com/zws20070309/dsh-copy-session-id#readme",
+  "files": [
+    "lib",
+    "locale",
+    "cordis.patch.yml",
+    "icon.svg",
+    "README.md",
+    "LICENSE"
+  ],
+  "peerDependencies": {
+    "@deepseek-ai/dsh-client-locale": ">=0.2.0-rc.1 <0.3.0",
+    "@deepseek-ai/dsh-client-ui-plugin-manager": ">=0.2.0-rc.1 <0.3.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-plugin-manager"
+      ]
+    }
+  },
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "plugin",
+    "session",
+    "clipboard"
+  ],
+  "license": "MIT"
+}

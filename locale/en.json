@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Copy Session ID",
+    "description": "One more icon button on the right of the conversation title bar: click it to put the current session ID on the clipboard verbatim; the icon turns into a check with a brief confirmation, then reverts after 1.5s. The ID is never shown permanently, and the copied text carries no prefix or suffix."
+  }
+}

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="Copy session ID">
+  <rect width="32" height="32" rx="7" fill="#2B3442"/>
+  <g fill="none" stroke="#FFFFFF" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M16.4 12.4v-1.1a2.6 2.6 0 0 0-2.6-2.6h-4.1a2.6 2.6 0 0 0-2.6 2.6v4.1a2.6 2.6 0 0 0 2.6 2.6h1.1"/>
+    <rect x="12.6" y="13.9" width="10.9" height="10.9" rx="2.5"/>
+  </g>
+</svg>

@@ -1,0 +1,18 @@
+# 复制会话 ID —— bundle patch（host 平面）
+#
+# 作用只有一行：把本包作为一行 cordis 插件配置**新建**进 profile roster。
+#
+# 为什么必须有这行：浏览器半的发现机制是跟着 cordis fiber 走的
+# （dsh-client-modules/lib/index.js:114-116 —— 每次 `internal/plugin` 发射都会把该 fiber 的
+# 条目名标脏），cordis 只会 import 配置里出现过的包。所以没有这行 = 没有 fiber =
+# `dsh.client` 声明永远扫不到 = 浏览器根本不会加载本插件的 client bundle。
+#
+# 本文件属于**我们自己的包**：DSH 官方升级只改 app.asar 与 profile 的 cordis.yml，
+# 不会覆盖插件包里的文件。
+#
+# `- insert:` 是**新建**行，不碰任何已存在的行，因此与官方 bundle 层之间没有先后依赖 ——
+# 这也是本文件敢这么短的原因（对照 @linxin666/dsh-client-ui-git-graph 与
+# @linxin666/dsh-client-ui-session-id 的 cordis.patch.yml，二者都是这三行形状）。
+- insert:
+    - id: copy-session-id
+      name: '@zws/dsh-copy-session-id'
