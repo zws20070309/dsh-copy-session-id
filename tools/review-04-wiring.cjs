@@ -246,9 +246,13 @@ check('README 不再让用户改 profiles/' + path.basename(PROFILE) + '/cordis.
   } else if (head !== '') {
     console.log('  [note] profile cordis.yml 已被 DSH 改写（不再是空列表占位），跳过头部校验')
   }
-  // 给出的 patch 落点文件真实存在，且是 profile 自己的 patch 层
-  const pl = lines(path.join(PROFILE, 'cordis.patch.yml')).slice(0, 4).join('\n')
-  if (!pl.includes('applied after every bundle layer')) throw new Error('cordis.patch.yml 头部文案对不上：\n' + pl)
+  // 给出的 patch 落点文件真实存在，且是 profile 自己的 patch 层。
+  // 读全文而不是前几行：该文件头部可能被别的插件的维护工具改写（本机就发生过），
+  // 「applied after every bundle layer」这句话的位置并不固定。
+  const patchPath = path.join(PROFILE, 'cordis.patch.yml')
+  if (!fs.existsSync(patchPath)) throw new Error('profile cordis.patch.yml 不存在：' + patchPath)
+  const pl = read(patchPath)
+  if (!pl.includes('applied after every bundle layer')) throw new Error('profile cordis.patch.yml 里找不到「applied after every bundle layer」')
 })
 }
 
